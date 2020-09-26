@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -21,11 +23,13 @@ public class UserController {
 	private UserService userService;
 
 	@GetMapping("/users")
-	public List<UserBean> getAllUsers() {
+	public List<UserBean> getAllUsers(
+			@RequestHeader(value = "test", required = false) String test, @RequestAttribute("visitorCounter") Integer counter) {
+		System.out.println(test+"hearder    counter"+counter);
 		return userService.getAllUsers();
 	}
 	
-	
+	//@RequestAttribute("visitorCounter") Integer counter
 	@GetMapping("/users/{id}")
 	public  Optional<UserBean> getSpecificUsers(@PathVariable("id") long id ) {
 		return userService.getSpecificUsers(id);
