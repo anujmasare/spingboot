@@ -1,9 +1,11 @@
-package com.example.demo;
+package com.home;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.home.h2Curd.UserBean;
 
 @RestController
 public class GetDataController {
@@ -30,7 +32,6 @@ public class GetDataController {
 	
 	@GetMapping("/hello3")
 	public UserBean getDataBean() {
-		userBean.setCity("Mumbai");
 		return userBean;//"New Data";
 	}
 }
