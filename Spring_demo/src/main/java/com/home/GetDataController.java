@@ -28,10 +28,10 @@ public class GetDataController {
 	}
 	
 	@Autowired
-	UserBean userBean;
+	UserBean userBean1;
 	
 	@GetMapping("/hello3")
 	public UserBean getDataBean() {
-		return userBean;//"New Data";
+		return userBean1;//"New Data";
 	}
 }
